@@ -1,0 +1,31 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+input {
+  padding: 0 8px;
+  margin-bottom: 20px;
+  height: 32px;
+  border: 1px solid lightslategray;
+  border-radius: 4px;
+}
+
+button {
+  height: 48px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(19, 130, 203);
+}
+
+button:hover {
+  background-color: rgb(12, 116, 185);
+}
