@@ -10,21 +10,32 @@
 </head>
 
 <body>
-  <form>
+  <form id="form" novalidate>
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" autofocus />
+    <input type="email" id="email" name="email" required />
+    <span class="email-error"></span>
+
     <label for="country">Country</label>
-    <input list="countries">
-    <datalist id="countries">
+    <input list="country" id="country-input" required>
+    <datalist id="country">
       <option value="United States"></option>
+      <option value="Mexico"></option>
     </datalist>
+    <span class="country-error"></span>
+    
     <label for="zip-code">Zip Code</label>
-    <input type="number" />
+    <input type="text" id="zip-code" pattern="[0-9]{5}" required/>
+    <span class="zip-code-error"></span>
+    
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" />
+    <input type="password" id="password" name="password" minlength="8" maxlength="26" required/>
+    <span class="password-error"></span>
+
     <label for="confirm-password">Confirm Password</label>
-    <input type="password" id="confirm-password" name="confirm-password" />
-    <button type="button">Submit</button>
+    <input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="26" required/>
+    <span class="confirm-password-error"></span>
+
+    <button type="submit">Submit</button>
   </form>
 </body>
 
