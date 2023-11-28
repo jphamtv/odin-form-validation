@@ -13,7 +13,7 @@
   <form id="form" novalidate>
     <label for="email">Email</label>
     <input type="email" id="email" name="email" required />
-    <span class="email-error"></span>
+    <span class="email-error" aria-live="polite"></span>
 
     <label for="country">Country</label>
     <input list="country" id="country-input" required>
@@ -21,19 +21,19 @@
       <option value="United States"></option>
       <option value="Mexico"></option>
     </datalist>
-    <span class="country-error"></span>
+    <span class="country-error" aria-live="polite"></span>
     
     <label for="zip-code">Zip Code</label>
     <input type="text" id="zip-code" pattern="[0-9]{5}" required/>
-    <span class="zip-code-error"></span>
+    <span class="zip-code-error" aria-live="polite"></span>
     
     <label for="password">Password</label>
     <input type="password" id="password" name="password" minlength="8" maxlength="26" required/>
-    <span class="password-error"></span>
+    <span class="password-error" aria-live="polite"></span>
 
     <label for="confirm-password">Confirm Password</label>
-    <input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="26" required/>
-    <span class="confirm-password-error"></span>
+    <input type="password" id="confirm-password" name="confirm-password" required/>
+    <span class="confirm-password-error" aria-live="polite"></span>
 
     <button type="submit">Submit</button>
   </form>

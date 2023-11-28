@@ -51,36 +51,39 @@ password.addEventListener('input', (event) => {
 });
 
 confirmPassword.addEventListener('input', (event) => {
-  if (confirmPassword.validity.valid) {
-    confirmPassword.textContent = '';
-    confirmPassword.className = 'confirm-password-error';
+  let password1 = password.value;
+  let password2 = confirmPassword.value;
+
+  if (password1 === password2) {
+    confirmPassword.className = '';
+    confirmPasswordError.textContent = '';
+    confirmPasswordError.className = 'confirm-password-error';
   } else {
     showConfirmPasswordError();
   }
 });
 
 form.addEventListener('submit', (event) => {
-  if (!email.validity.valid) {
-    showEmailError();
-  } 
-  
-  if (!country.validity.valid) {
-    showCountryError();
-  } 
-  
-  if (!zipCode.validity.valid) {
-    showZipCodeError();
-  } 
-  
-  if (!password.validity.valid) {
-    showPasswordError();
-  } 
-  
-  if (!confirmPassword.validity.valid) {
-    showConfirmPasswordError();
-  }
-
   event.preventDefault();
+    
+  if (!form.checkValidity()) {
+    showEmailError();
+    showCountryError();
+    showZipCodeError();
+    showPasswordError();
+    showConfirmPasswordError();
+    
+    alert('Please fill out all the required fields correctly.');
+  } else {
+    let password1 = password.value;
+    let password2 = confirmPassword.value;
+    
+    if (password1 === password2) {
+      alert('High Five!');
+    } else {
+      showConfirmPasswordError();
+    }
+  }
 });
 
 function showEmailError() {
@@ -121,25 +124,16 @@ function showPasswordError() {
   passwordError.className = 'password-error active';
 }
 
-// function showConfirmPasswordError() {
-//   if (confirmPassword.validity.typeMismatch) {
-//     confirmPasswordError.textContent = 'Passwords must match.';
-//   } else if (confirmPassword.validity.valueMissing) {
-//     confirmPasswordError.textContent = 'Re-enter the password.';
-//   }
-
-//   confirmPasswordError.className = 'confirm-password-error active';
-// }
-
 function showConfirmPasswordError() {
-  if (password.value !== confirmPassword.value) {
-    console.log(password.value, confirmPassword.value);
+  let password1 = password.value;
+  let password2 = confirmPassword.value;
+
+  if (password1 !== password2) {
     confirmPasswordError.textContent = 'Passwords must match.';
+    confirmPassword.className = 'invalid';
   } else if (confirmPassword.validity.valueMissing) {
     confirmPasswordError.textContent = 'Re-enter the password to confirm.';
-  } else {
-    confirmPasswordError.textContent = '';
-  }
+  } 
 
   confirmPasswordError.className = 'confirm-password-error active';
 }
